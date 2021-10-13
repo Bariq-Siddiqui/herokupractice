@@ -1,29 +1,35 @@
 const express = require('express')
+const PORT = process.env.PORT || 3000
 const app = express()
-const PORT = process.env.PORT || 5000
+const path = require('path')
 
-app.get('/', (req, res) => {
-    res.send('Hello World........!')
+app.use('/', express.static(path.join(__dirname, 'web/build')))
+// app.use('/', express.static(path.join(__dirname, 'web/build')))
+
+
+
+// app.get('/', (req, res) => {
+//     res.send('Hello World!')
+// })
+
+
+app.get('/api/v1/profile', (req, res) => {
+    res.send('here is your profile')
 })
-app.get('/about', (req, res) => {
-    res.send('About Section........!')
+app.post('/api/v1/profile', (req, res) => {
+    res.send('profile created')
 })
-app.get('/contact', (req, res) => {
-    res.send('Contact Section........!')
+app.put('/api/v1/profile', (req, res) => {
+    res.send('profile updated')
 })
-app.get('/profile', (req, res) => {
-    res.send('This is your profile........!')
+app.delete('/api/v1/profile', (req, res) => {
+    res.send('profile deleted')
 })
-app.post('/profile', (req, res) => {
-    res.send('Profile Created........!')
+app.get("/**", (req, res, next) => {
+    res.sendFile(path.join(__dirname, "./web/build/index.html"))
 })
-app.put('/profile', (req, res) => {
-    res.send('Profile Updated........!')
-})
-app.delete('/profile', (req, res) => {
-    res.send('Profile Deleted........!')
-})
+
 
 app.listen(PORT, () => {
-  console.log(`Example app listening at http://localhost:${PORT}`)
-})
+    console.log(`Example app listening at http://localhost:${PORT}`)
+}) 
