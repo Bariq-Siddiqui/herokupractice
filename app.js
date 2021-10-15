@@ -1,9 +1,9 @@
 const express = require('express')
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 5000
 const app = express()
 const path = require('path')
 
-app.use('/', express.static(path.join(__dirname, 'web/build')))
+app.use('/', express.static(path.join(__dirname, 'weather/build')))
 // app.use('/', express.static(path.join(__dirname, 'web/build')))
 
 
@@ -26,7 +26,7 @@ app.delete('/api/v1/profile', (req, res) => {
     res.send('profile deleted')
 })
 app.get("/**", (req, res, next) => {
-    res.sendFile(path.join(__dirname, "./web/build/index.html"))
+    res.sendFile(path.join(__dirname, "./weather/build/index.html"))
 })
 
 

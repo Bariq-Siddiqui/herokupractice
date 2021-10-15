@@ -135,7 +135,7 @@ export default function TodoApp(){
                         </Stack>
                          </form>
 
-                        {todo.map((eachUser, i) => {
+                        {/* {todo.map((eachUser, i) => {
 
                         return (
                             <Grid key={i} marginRight='15%' marginLeft='2%'>
@@ -155,7 +155,7 @@ export default function TodoApp(){
                             </TableContainer>
                             </Grid>   
                             )
-                        })}
+                        })} */}
 
                     </Grid>
                 </Grid>
